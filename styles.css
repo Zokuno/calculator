@@ -20,14 +20,27 @@ body {
     align-items: center;
 }
 
-.calc-screen {
+.calc-screen-cntr {
     background-color: aliceblue;
     height: 80px;
     width: 250px;
     margin-bottom: 10px;
 }
 
+.calc-screen {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
 button {
     height: 50px;
     width: 60px;
+    cursor: pointer;
+}
+
+.row {
+    margin-bottom: 5px;
 }
