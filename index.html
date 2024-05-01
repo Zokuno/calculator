@@ -15,47 +15,52 @@
     <main>
         <div class="calc-cntr">
             <div class="calc-screen-cntr">
-                <div class="calc-screen"></div>
+                <div class="calc-screen" id="calc-screen-1"></div>
+                <div class="calc-screen" id="calc-screen-2">0</div>
             </div>
             <div class="row" id="row1">
-                <button class="percentage-btn">%</button>
-                <button class="clear-entry-btn">CE</button>
-                <button class="clear-btn">C</button>
-                <button class="backspace-btn"><-</button>
+                <button class="func-btn" id="clear-btn">C</button>
+                <button class="func-btn" id="clear-entry-btn">CE</button>
+                <button class="func-btn" id="percentage-btn">%</button>
+                <button class="func-btn" id="backspace-btn"><-</button>
             </div>
             <div class="row" id="row2">
-                <button class="">1/x</button>
-                <button class="">x2</button>
-                <button class="">2/-x</button>
-                <button class="divide-btn">/</button>
+                <button class="func-btn" id="">1/x</button>
+                <button class="func-btn" id="">x2</button>
+                <button class="func-btn" id="">2/-x</button>
+                <button class="func-btn" id="divide-btn">/</button>
             </div>
             <div class="row" id="row3">
-                <button class="seven-btn">7</button>
-                <button class="eight-btn">8</button>
-                <button class="nine-btn">9</button>
-                <button class="multiply-btn">x</button>
+                <button class="nmbr-btn" id="seven-btn">7</button>
+                <button class="nmbr-btn" id="eight-btn">8</button>
+                <button class="nmbr-btn" id="nine-btn">9</button>
+                <button class="func-btn" id="multiply-btn">x</button>
             </div>
             <div class="row" id="row4">
-                <button class="four-btn">4</button>
-                <button class="five-btn">5</button>
-                <button class="six-btn">6</button>
-                <button class="subtract-btn">-</button>
+                <button class="nmbr-btn" id="four-btn">4</button>
+                <button class="nmbr-btn" id="five-btn">5</button>
+                <button class="nmbr-btn" id="six-btn">6</button>
+                <button class="func-btn" id="subtract-btn">-</button>
             </div>
             <div class="row" id="row5">
-                <button class="one-btn">1</button>
-                <button class="two-btn">2</button>
-                <button class="three-btn">3</button>
-                <button class="add-btn">+</button>
+                <button class="nmbr-btn" id="one-btn">1</button>
+                <button class="nmbr-btn" id="two-btn">2</button>
+                <button class="nmbr-btn" id="three-btn">3</button>
+                <button class="func-btn" id="add-btn">+</button>
             </div>
             <div class="row" id="row6">
-                <button class="negative-btn">+/-</button>
-                <button class="zero-btn">0</button>
-                <button class="decimal-btn">.</button>
-                <button class="equals-btn">=</button>
+                <button class="nmbr-btn" id="negative-btn">+/-</button>
+                <button class="nmbr-btn" id="zero-btn">0</button>
+                <button class="nmbr-btn" id="decimal-btn">.</button>
+                <button class="func-btn" id="equals-btn">=</button>
             </div>
         </div>
 
     </main>
+
+    <footer>
+        <div class="copyright">Copyright © 2024 Zokuno</div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
