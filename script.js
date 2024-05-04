@@ -11,6 +11,8 @@ let multiplyBtn = document.querySelector("#multiply-btn");
 let subtractBtn = document.querySelector("#subtract-btn");
 let addBtn = document.querySelector("#add-btn");
 let equalsBtn = document.querySelector("#equals-btn");
+let nmbrBtn = document.querySelector(".nmbr-btn");
+let nmbrBtns = document.querySelectorAll(".nmbr-btn");
 let zeroBtn = document.querySelector("#zero-btn");
 let oneBtn = document.querySelector("#one-btn");
 let twoBtn = document.querySelector("#two-btn");
@@ -25,102 +27,23 @@ let decimalBtn = document.querySelector("#decimal-btn");
 
 calcScreen1.innerHTML = "";
 let nmbr1 = 0;
-let nmbr2 = 1;
-let oper = "";
+let nmbr2 = 0;
+let operActive = false;
+let newNum = false;
 
 // Event Listener List
 clearBtn.addEventListener("click", () => {
+    nmbr1 = 0;
+    nmbr2 = 0;
     calcScreen1.innerHTML = "";
     calcScreen2.innerHTML = "0";
-});
-
-zeroBtn.addEventListener("click", () => {
-    if (calcScreen2.innerHTML === "0") {
-        // Left blank to stop "0" being entered multiple times after using Clear
-    } else {
-        calcScreen2.innerHTML = calcScreen2.innerHTML + "0";
-    }
-});
-
-oneBtn.addEventListener("click", () => {
-    if (calcScreen2.innerHTML === "0") {
-        calcScreen2.innerHTML = "";
-        calcScreen2.innerHTML = "1";
-    } else {
-        calcScreen2.innerHTML = calcScreen2.innerHTML + "1";
-    }
-});
-
-twoBtn.addEventListener("click", () => {
-    if (calcScreen2.innerHTML === "0") {
-        calcScreen2.innerHTML = "";
-        calcScreen2.innerHTML = "2";
-    } else {
-        calcScreen2.innerHTML = calcScreen2.innerHTML + "2";
-    }
-});
-
-threeBtn.addEventListener("click", () => {
-    if (calcScreen2.innerHTML === "0") {
-        calcScreen2.innerHTML = "";
-        calcScreen2.innerHTML = "3";
-    } else {
-        calcScreen2.innerHTML = calcScreen2.innerHTML + "3";
-    }
-});
-
-fourBtn.addEventListener("click", () => {
-    if (calcScreen2.innerHTML === "0") {
-        calcScreen2.innerHTML = "";
-        calcScreen2.innerHTML = "4";
-    } else {
-        calcScreen2.innerHTML = calcScreen2.innerHTML + "4";
-    }
-});
-
-fiveBtn.addEventListener("click", () => {
-    if (calcScreen2.innerHTML === "0") {
-        calcScreen2.innerHTML = "";
-        calcScreen2.innerHTML = "5";
-    } else {
-        calcScreen2.innerHTML = calcScreen2.innerHTML + "5";
-    }
-});
-
-sixBtn.addEventListener("click", () => {
-    if (calcScreen2.innerHTML === "0") {
-        calcScreen2.innerHTML = "";
-        calcScreen2.innerHTML = "6";
-    } else {
-        calcScreen2.innerHTML = calcScreen2.innerHTML + "6";
-    }
-});
-
-sevenBtn.addEventListener("click", () => {
-    if (calcScreen2.innerHTML === "0") {
-        calcScreen2.innerHTML = "";
-        calcScreen2.innerHTML = "7";
-    } else {
-        calcScreen2.innerHTML = calcScreen2.innerHTML + "7";
-    }
-});
-
-eightBtn.addEventListener("click", () => {
-    if (calcScreen2.innerHTML === "0") {
-        calcScreen2.innerHTML = "";
-        calcScreen2.innerHTML = "8";
-    } else {
-        calcScreen2.innerHTML = calcScreen2.innerHTML + "8";
-    }
-});
-
-nineBtn.addEventListener("click", () => {
-    if (calcScreen2.innerHTML === "0") {
-        calcScreen2.innerHTML = "";
-        calcScreen2.innerHTML = "9";
-    } else {
-        calcScreen2.innerHTML = calcScreen2.innerHTML + "9";
-    }
+    operActive = false;
+    newNum = false;
+    console.log("Value 1: " + nmbr1);
+    console.log("Value 2: " + nmbr2);
+    console.log("Operator Active?: " + operActive);
+    console.log("New Number Active?: " + newNum);
+    
 });
 
 decimalBtn.addEventListener("click", () => {
@@ -131,20 +54,57 @@ decimalBtn.addEventListener("click", () => {
     }
 });
 
-addBtn.addEventListener("click", () => {
-    if (calcScreen2.innerHTML === "0") {
-        // Left blank to stop "0" being entered to calcscreen1 after using a function
-    } else {
-        nmbr1 = parseFloat(calcScreen2.innerHTML);
-        oper = "+";
-        calcScreen1.innerHTML = calcScreen1.innerHTML + calcScreen2.innerHTML;
-        calcScreen1.innerHTML = calcScreen1.innerHTML + " + ";
-    
-        // calcScreen2.innerHTML = nmbr1 + nmbr2;
-    }
-});
-
 equalsBtn.addEventListener("click", () => {
     let result = nmbr1 + oper + nmbr2;
     calcScreen2.innerHTML = parseFloat(result);
+});
+
+addBtn.addEventListener("click", () => {
+    if (calcScreen2.innerHTML === "0") {
+        // Left blank to stop "0" being entered to calcscreen1 after using a function
+    } else if (operActive === true) {
+        nmbr2 = nmbr2 + parseFloat(calcScreen2.innerHTML);
+        console.log("Value 1: " + nmbr1);
+        console.log("Value 2: " + nmbr2);
+        calcScreen1.innerHTML = calcScreen1.innerHTML + calcScreen2.innerHTML;
+        calcScreen1.innerHTML = calcScreen1.innerHTML + " + ";
+        calcScreen2.innerHTML = nmbr1 + nmbr2;
+        operActive = false;
+        newNum = true;
+        console.log("Operator Active?: " + operActive);
+        console.log("New Number Active?: " + newNum);
+    } else {
+        nmbr1 = nmbr1 + parseFloat(calcScreen2.innerHTML);
+        console.log("Value 1: " + nmbr1);
+        console.log("Value 2: " + nmbr2);
+        calcScreen1.innerHTML = calcScreen1.innerHTML + calcScreen2.innerHTML;
+        calcScreen1.innerHTML = calcScreen1.innerHTML + " + ";
+        calcScreen2.innerHTML = nmbr1 + nmbr2;
+        operActive = true;
+        newNum = true;
+        console.log("Operator Active? " + operActive);
+        console.log("New Number Active?: " + newNum);
+    }
+});
+
+nmbrBtns.forEach(btn => {
+    btn.addEventListener("click", function() {
+        let buttonText = this.textContent;
+        if (calcScreen2.innerHTML === "0") {
+            calcScreen2.innerHTML = "";
+            calcScreen2.innerHTML = buttonText;
+        } else if (newNum && operActive) {
+            newNum = false;
+            console.log("New Number Active?: " + newNum)
+            calcScreen2.innerHTML = "";
+            calcScreen2.innerHTML += buttonText;
+        } else if (newNum && !operActive) {
+            newNum = false;
+            calcScreen2.innerHTML = "";
+            calcScreen2.innerHTML += buttonText;
+        } else {
+            newNum = false;
+            calcScreen2.innerHTML += buttonText;
+        }
+    });
 });
