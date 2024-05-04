@@ -70,6 +70,14 @@ main {
     border-radius: 10px;
 }
 
+.oper-btn {
+    background-color: darkgray;
+    height: 50px;
+    width: 60px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
 .nmbr-btn {
     height: 50px;
     width: 60px;
