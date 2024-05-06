@@ -28,6 +28,7 @@ let decimalBtn = document.querySelector("#decimal-btn");
 calcScreen1.innerHTML = "";
 let nmbr1 = 0;
 let nmbr2 = 0;
+let total = 0;
 let operActive = false;
 let newNum = false;
 
@@ -35,12 +36,14 @@ let newNum = false;
 clearBtn.addEventListener("click", () => {
     nmbr1 = 0;
     nmbr2 = 0;
+    total = 0;
     calcScreen1.innerHTML = "";
     calcScreen2.innerHTML = "0";
     operActive = false;
     newNum = false;
     console.log("Value 1: " + nmbr1);
     console.log("Value 2: " + nmbr2);
+    console.log("Total: " + total);
     console.log("Operator Active?: " + operActive);
     console.log("New Number Active?: " + newNum);
     
@@ -64,22 +67,26 @@ addBtn.addEventListener("click", () => {
         // Left blank to stop "0" being entered to calcscreen1 after using a function
     } else if (operActive === true) {
         nmbr2 = nmbr2 + parseFloat(calcScreen2.innerHTML);
-        console.log("Value 1: " + nmbr1);
-        console.log("Value 2: " + nmbr2);
         calcScreen1.innerHTML = calcScreen1.innerHTML + calcScreen2.innerHTML;
         calcScreen1.innerHTML = calcScreen1.innerHTML + " + ";
-        calcScreen2.innerHTML = nmbr1 + nmbr2;
+        total = nmbr1 + nmbr2;
+        calcScreen2.innerHTML = total;
+        console.log("Value 1: " + nmbr1);
+        console.log("Value 2: " + nmbr2);
+        console.log("Total: " + total);
         operActive = false;
         newNum = true;
         console.log("Operator Active?: " + operActive);
         console.log("New Number Active?: " + newNum);
     } else {
         nmbr1 = nmbr1 + parseFloat(calcScreen2.innerHTML);
-        console.log("Value 1: " + nmbr1);
-        console.log("Value 2: " + nmbr2);
         calcScreen1.innerHTML = calcScreen1.innerHTML + calcScreen2.innerHTML;
         calcScreen1.innerHTML = calcScreen1.innerHTML + " + ";
-        calcScreen2.innerHTML = nmbr1 + nmbr2;
+        total = nmbr1 + nmbr2;
+        calcScreen2.innerHTML = total;
+        console.log("Value 1: " + nmbr1);
+        console.log("Value 2: " + nmbr2);
+        console.log("Total: " + total);
         operActive = true;
         newNum = true;
         console.log("Operator Active? " + operActive);
