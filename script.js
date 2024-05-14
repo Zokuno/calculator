@@ -66,10 +66,10 @@ addBtn.addEventListener("click", () => {
     if (calcScreen2.innerHTML === "0") {
         // Left blank to stop "0" being entered to calcscreen1 after using a function
     } else if (operActive === true) {
-        nmbr2 = nmbr2 + parseFloat(calcScreen2.innerHTML);
+        nmbr2 = parseFloat(calcScreen2.innerHTML);
         calcScreen1.innerHTML = calcScreen1.innerHTML + calcScreen2.innerHTML;
         calcScreen1.innerHTML = calcScreen1.innerHTML + " + ";
-        total = nmbr1 + nmbr2;
+        total = total + nmbr2;
         calcScreen2.innerHTML = total;
         console.log("Value 1: " + nmbr1);
         console.log("Value 2: " + nmbr2);
@@ -79,10 +79,51 @@ addBtn.addEventListener("click", () => {
         console.log("Operator Active?: " + operActive);
         console.log("New Number Active?: " + newNum);
     } else {
-        nmbr1 = nmbr1 + parseFloat(calcScreen2.innerHTML);
+        nmbr1 = parseFloat(calcScreen2.innerHTML);
         calcScreen1.innerHTML = calcScreen1.innerHTML + calcScreen2.innerHTML;
         calcScreen1.innerHTML = calcScreen1.innerHTML + " + ";
-        total = nmbr1 + nmbr2;
+        total = total + nmbr2;
+        if (nmbr2 === 0) {
+            total = nmbr1;
+        } else {
+            total = total + nmbr1;
+        }
+        calcScreen2.innerHTML = total;
+        console.log("Value 1: " + nmbr1);
+        console.log("Value 2: " + nmbr2);
+        console.log("Total: " + total);
+        operActive = true;
+        newNum = true;
+        console.log("Operator Active? " + operActive);
+        console.log("New Number Active?: " + newNum);
+    }
+});
+
+subtractBtn.addEventListener("click", () => {
+    if (calcScreen2.innerHTML === "0") {
+        // Left blank to stop "0" being entered to calcscreen1 after using a function
+    } else if (operActive === true) {
+        nmbr2 = parseFloat(calcScreen2.innerHTML);
+        calcScreen1.innerHTML = calcScreen1.innerHTML + calcScreen2.innerHTML;
+        calcScreen1.innerHTML = calcScreen1.innerHTML + " - ";
+        total = total - nmbr2;
+        calcScreen2.innerHTML = total;
+        console.log("Value 1: " + nmbr1);
+        console.log("Value 2: " + nmbr2);
+        console.log("Total: " + total);
+        operActive = false;
+        newNum = true;
+        console.log("Operator Active?: " + operActive);
+        console.log("New Number Active?: " + newNum);
+    } else {
+        nmbr1 = parseFloat(calcScreen2.innerHTML);
+        calcScreen1.innerHTML = calcScreen1.innerHTML + calcScreen2.innerHTML;
+        calcScreen1.innerHTML = calcScreen1.innerHTML + " - ";
+        if (nmbr2 === 0) {
+            total = nmbr1;
+        } else {
+            total = total - nmbr1;
+        }
         calcScreen2.innerHTML = total;
         console.log("Value 1: " + nmbr1);
         console.log("Value 2: " + nmbr2);
